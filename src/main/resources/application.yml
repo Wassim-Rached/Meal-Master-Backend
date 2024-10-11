@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: meal-master-server
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://ep-noisy-cell-a2l819sd.eu-central-1.aws.neon.tech/meal-master-db?sslmode=require}
+    username: ${DATABASE_USERNAME:meal-master-db_owner}
+    password: ${DATABASE_PASSWORD:2fg7prwFRlQO}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: ${JPA_HIBERNATE_DDL_AUTO:create}
+    show-sql: ${JPA_SHOW_SQL:false}
