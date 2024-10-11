@@ -8,5 +8,5 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: ${JPA_HIBERNATE_DDL_AUTO:create}
+      ddl-auto: ${JPA_HIBERNATE_DDL_AUTO:update}
     show-sql: ${JPA_SHOW_SQL:false}
