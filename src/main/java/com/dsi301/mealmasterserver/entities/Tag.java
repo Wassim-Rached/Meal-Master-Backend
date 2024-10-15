@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "ingredients")
+@Table(name = "tags")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Tags {
+public class Tag {
 
         @Id
         @GeneratedValue
@@ -22,13 +22,13 @@ public class Tags {
         @Column(nullable = false,unique = true)
         private String name;
 
-        @OneToMany(mappedBy = "tag")
-        private List<RecipeTag> recipeTags;
+        @ManyToMany(mappedBy = "tags")
+        private List<Recipe> recipes;
 
         @Override
         public boolean equals(Object obj) {
             if (this == obj) return true;
-            if (!(obj instanceof Tags tag)) return false;
+            if (!(obj instanceof Tag tag)) return false;
             return this.name.equals(tag.getName());
         }
 
@@ -39,9 +39,6 @@ public class Tags {
 
         @Override
         public String toString() {
-            return "tags{" +
-                    "id=" + id +
-                    ", name='" + name + '\'' +
-                    '}';
+            return "#" + this.name;
         }
 }

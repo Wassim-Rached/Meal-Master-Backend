@@ -4,7 +4,9 @@ import com.dsi301.mealmasterserver.dto.instructions.CreateInstructionRequestDTO;
 import com.dsi301.mealmasterserver.dto.instructions.GeneralInstructionDTO;
 import com.dsi301.mealmasterserver.dto.recipeIngredients.CreateRecipeIngredientRequestDTO;
 import com.dsi301.mealmasterserver.dto.recipeIngredients.GeneralRecipeIngredientDTO;
+import com.dsi301.mealmasterserver.dto.tags.GeneralTagDTO;
 import com.dsi301.mealmasterserver.entities.Recipe;
+import com.dsi301.mealmasterserver.entities.Tag;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,6 +26,8 @@ public class GeneralRecipeDTO {
     private Integer cooking_time;
     private Integer serving_size;
 
+    private Iterable<GeneralTagDTO> tags;
+
     private List<GeneralInstructionDTO> instructions;
 
     private List<GeneralRecipeIngredientDTO> recipeIngredients;
@@ -35,13 +39,11 @@ public class GeneralRecipeDTO {
         this.cover_img_url = recipe.getCover_img_url();
         this.cooking_time = recipe.getCooking_time();
         this.serving_size = recipe.getServing_size();
+        this.tags = GeneralTagDTO.fromEntities(recipe.getTags());
 
-        System.out.println(recipe.getInstructions());
-        System.out.println(this.instructions);
         this.instructions = recipe.getInstructions().stream()
                 .map(GeneralInstructionDTO::new)
                 .collect(Collectors.toList());
-        System.out.println(this.instructions);
 
         this.recipeIngredients = recipe.getRecipeIngredients().stream()
                 .map(GeneralRecipeIngredientDTO::new)

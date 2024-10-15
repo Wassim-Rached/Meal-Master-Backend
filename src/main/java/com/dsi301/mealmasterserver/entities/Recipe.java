@@ -37,8 +37,16 @@ public class Recipe {
     @OneToMany(mappedBy = "recipe", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<RecipeIngredient> recipeIngredients;
 
-    @OneToMany(mappedBy = "recipe", fetch = FetchType.EAGER)
-    private List<RecipeTag> recipeTags;
+    @ManyToMany(
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL
+    )
+    @JoinTable(
+            name = "recipe_tags",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+    private List<Tag> tags;
 
     @Override
     public String toString() {
