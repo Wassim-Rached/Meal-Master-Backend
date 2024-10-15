@@ -37,6 +37,8 @@ public class Recipe {
     @OneToMany(mappedBy = "recipe", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<RecipeIngredient> recipeIngredients;
 
+    @OneToMany(mappedBy = "recipe", fetch = FetchType.EAGER)
+    private List<RecipeTag> recipeTags;
 
     @Override
     public String toString() {
