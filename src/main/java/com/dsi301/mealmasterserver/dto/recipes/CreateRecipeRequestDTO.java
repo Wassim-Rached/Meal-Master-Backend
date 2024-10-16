@@ -49,8 +49,8 @@ public class CreateRecipeRequestDTO implements ToEntity<Recipe, TagRepository> {
                 .title(title)
                 .description(description)
                 .cover_img_url(cover_img_url)
-                .cooking_time(cooking_time)
-                .serving_size(serving_size)
+                .cookingTime(cooking_time)
+                .servingSize(serving_size)
                 .tags(tagEntities)
                 .build();
 

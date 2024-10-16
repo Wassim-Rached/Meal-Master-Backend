@@ -3,7 +3,6 @@ package com.dsi301.mealmasterserver.controllers;
 import com.dsi301.mealmasterserver.dto.tags.GeneralTagDTO;
 import com.dsi301.mealmasterserver.repositories.TagRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

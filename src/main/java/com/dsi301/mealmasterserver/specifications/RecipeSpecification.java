@@ -22,15 +22,34 @@ public class RecipeSpecification {
         };
     }
 
-    public static Specification<Recipe> hasCookingTime(Integer cookingTime) {
-        return (root, query, criteriaBuilder) ->
-                cookingTime == null ? criteriaBuilder.conjunction() : criteriaBuilder.equal(root.get("cooking_time"), cookingTime);
+    public static Specification<Recipe> hasCookingTimeRange(Integer minCookingTime, Integer maxCookingTime) {
+        return (root, query, criteriaBuilder) -> {
+            if (minCookingTime == null && maxCookingTime == null) {
+                return criteriaBuilder.conjunction(); // No filter if both are null
+            } else if (minCookingTime != null && maxCookingTime != null) {
+                return criteriaBuilder.between(root.get("cookingTime"), minCookingTime, maxCookingTime);
+            } else if (minCookingTime != null) {
+                return criteriaBuilder.greaterThanOrEqualTo(root.get("cookingTime"), minCookingTime);
+            } else {
+                return criteriaBuilder.lessThanOrEqualTo(root.get("cookingTime"), maxCookingTime);
+            }
+        };
     }
 
-    public static Specification<Recipe> hasServingSize(Integer servingSize) {
-        return (root, query, criteriaBuilder) ->
-                servingSize == null ? criteriaBuilder.conjunction() : criteriaBuilder.equal(root.get("serving_size"), servingSize);
+    public static Specification<Recipe> hasServingSizeRange(Integer minServingSize, Integer maxServingSize) {
+        return (root, query, criteriaBuilder) -> {
+            if (minServingSize == null && maxServingSize == null) {
+                return criteriaBuilder.conjunction(); // No filter if both are null
+            } else if (minServingSize != null && maxServingSize != null) {
+                return criteriaBuilder.between(root.get("serving_size"), minServingSize, maxServingSize);
+            } else if (minServingSize != null) {
+                return criteriaBuilder.greaterThanOrEqualTo(root.get("serving_size"), minServingSize);
+            } else {
+                return criteriaBuilder.lessThanOrEqualTo(root.get("serving_size"), maxServingSize);
+            }
+        };
     }
+
 
     public static Specification<Recipe> hasAllTags(List<Tag> tags) {
         return (root, query, criteriaBuilder) -> {

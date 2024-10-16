@@ -36,7 +36,7 @@ public class RecipesController {
     // recommendation
     @GetMapping("/recommendation")
     public Iterable<GeneralRecipeDTO> getRecommendation() {
-        Iterable<Recipe> recipes = recipeRepository.findAll();
+        Iterable<Recipe> recipes = recipeRepository.findAll().subList(0, 3);
         return GeneralRecipeDTO.fromEntities(recipes);
     }
 
@@ -44,22 +44,37 @@ public class RecipesController {
     @GetMapping("/search")
     public Page<GeneralRecipeDTO> searchRecipes(
             @RequestParam(required = false) String search,
-            @RequestParam(required = false) Integer cookingTime,
-            @RequestParam(required = false) Integer servingSize,
-            @RequestParam(required = false, defaultValue = "id") String sortBy,
-            @RequestParam(required = false, defaultValue = "asc") String sortOrder,
-            @RequestParam(required = false) String tags,
+            @RequestParam(required = false) Integer minCookingTime,
+            @RequestParam(required = false) Integer maxCookingTime,
+            @RequestParam(required = false) Integer minServingSize,
+            @RequestParam(required = false) Integer maxServingSize,
+            @RequestParam(required = false, defaultValue = "id,asc") String sort,
+            @RequestParam(required = false, defaultValue = "") String tags,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
-        Sort sort = sortOrder.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending()
+        String sortBy = "id";
+        String sortOrder = "asc";
+
+        if (sort != null) {
+            String[] sortParts = sort.split(",");
+            if (sortParts.length == 2) {
+                sortBy = sortParts[0].trim();
+                sortOrder = sortParts[1].trim();
+            }
+        }
+        System.out.println(sortBy);
+        System.out.println(sortOrder);
+
+        Sort sortObj = sortOrder.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending()
                 : Sort.by(sortBy).descending();
-        Pageable pageable = PageRequest.of(page, size, sort);
+
+        Pageable pageable = PageRequest.of(page, size, sortObj);
         List<String> tagNames = List.of(tags.split(","));
         List<Tag> tagList = tagRepository.findAllByNameIn(tagNames);
 
         Specification<Recipe> spec = Specification.where(RecipeSpecification.hasSearchTerm(search))
-                .and(RecipeSpecification.hasCookingTime(cookingTime))
-                .and(RecipeSpecification.hasServingSize(servingSize))
+                .and(RecipeSpecification.hasCookingTimeRange(minCookingTime, maxCookingTime))
+                .and(RecipeSpecification.hasServingSizeRange(minServingSize, maxServingSize))
                 .and(RecipeSpecification.hasAllTags(tagList));
 
         Page<Recipe> resultPage = recipeRepository.findAll(spec, pageable);
