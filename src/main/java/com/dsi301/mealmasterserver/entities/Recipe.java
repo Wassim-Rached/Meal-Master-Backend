@@ -52,4 +52,18 @@ public class Recipe {
                 '}';
     }
 
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Recipe recipe)) return false;
+
+        return id != null ? id.equals(recipe.id) : super.equals(o);
+    }
+
+
 }

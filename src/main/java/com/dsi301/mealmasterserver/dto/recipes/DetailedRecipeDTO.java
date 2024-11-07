@@ -1,11 +1,8 @@
 package com.dsi301.mealmasterserver.dto.recipes;
 
-import com.dsi301.mealmasterserver.dto.instructions.CreateInstructionRequestDTO;
 import com.dsi301.mealmasterserver.dto.instructions.GeneralInstructionDTO;
-import com.dsi301.mealmasterserver.dto.recipeIngredients.CreateRecipeIngredientRequestDTO;
 import com.dsi301.mealmasterserver.dto.recipeIngredients.GeneralRecipeIngredientDTO;
 import com.dsi301.mealmasterserver.entities.Recipe;
-import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,7 +13,7 @@ import java.util.stream.StreamSupport;
 
 @Getter
 @Setter
-public class GeneralRecipeDTO {
+public class DetailedRecipeDTO {
     private UUID id;
     private String title;
     private String description;
@@ -28,7 +25,7 @@ public class GeneralRecipeDTO {
 
     private List<GeneralRecipeIngredientDTO> recipeIngredients;
 
-    public GeneralRecipeDTO(Recipe recipe) {
+    public DetailedRecipeDTO(Recipe recipe) {
         this.id = recipe.getId();
         this.title = recipe.getTitle();
         this.description = recipe.getDescription();
@@ -36,21 +33,18 @@ public class GeneralRecipeDTO {
         this.cooking_time = recipe.getCooking_time();
         this.serving_size = recipe.getServing_size();
 
-        System.out.println(recipe.getInstructions());
-        System.out.println(this.instructions);
         this.instructions = recipe.getInstructions().stream()
                 .map(GeneralInstructionDTO::new)
                 .collect(Collectors.toList());
-        System.out.println(this.instructions);
 
         this.recipeIngredients = recipe.getRecipeIngredients().stream()
                 .map(GeneralRecipeIngredientDTO::new)
                 .collect(Collectors.toList());
     }
 
-    public static Iterable<GeneralRecipeDTO> fromEntities(Iterable<Recipe> recipes) {
+    public static Iterable<DetailedRecipeDTO> fromEntities(Iterable<Recipe> recipes) {
         return StreamSupport.stream(recipes.spliterator(), false)
-                .map(GeneralRecipeDTO::new)
+                .map(DetailedRecipeDTO::new)
                 .toList();
     }
 }

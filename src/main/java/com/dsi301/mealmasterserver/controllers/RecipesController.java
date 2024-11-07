@@ -1,7 +1,7 @@
 package com.dsi301.mealmasterserver.controllers;
 
 import com.dsi301.mealmasterserver.dto.recipes.CreateRecipeRequestDTO;
-import com.dsi301.mealmasterserver.dto.recipes.GeneralRecipeDTO;
+import com.dsi301.mealmasterserver.dto.recipes.DetailedRecipeDTO;
 import com.dsi301.mealmasterserver.entities.Ingredient;
 import com.dsi301.mealmasterserver.entities.MeasurementUnit;
 import com.dsi301.mealmasterserver.entities.Recipe;
@@ -25,16 +25,16 @@ public class RecipesController {
 
     // recommendation
     @GetMapping("/recommendation")
-    public Iterable<GeneralRecipeDTO> getRecommendation() {
+    public Iterable<DetailedRecipeDTO> getRecommendation() {
         Iterable<Recipe> recipes = recipeRepository.findAll();
-        return GeneralRecipeDTO.fromEntities(recipes);
+        return DetailedRecipeDTO.fromEntities(recipes);
     }
 
     // search
     @GetMapping("/search")
-    public Iterable<GeneralRecipeDTO> searchRecipes(@RequestParam(defaultValue = "") String title) {
+    public Iterable<DetailedRecipeDTO> searchRecipes(@RequestParam(defaultValue = "") String title) {
         Iterable<Recipe> recipes = recipeRepository.findAllByTitleContaining(title);
-        return GeneralRecipeDTO.fromEntities(recipes);
+        return DetailedRecipeDTO.fromEntities(recipes);
     }
 
     // create
@@ -55,9 +55,9 @@ public class RecipesController {
 
     // get by id
     @GetMapping("/{id}")
-    public GeneralRecipeDTO getRecipeById(@PathVariable UUID id) {
+    public DetailedRecipeDTO getRecipeById(@PathVariable UUID id) {
         Recipe recipe = recipeRepository.findById(id).orElseThrow(EntityNotFoundException::new);
-        return new GeneralRecipeDTO(recipe);
+        return new DetailedRecipeDTO(recipe);
     }
 
     // update by id

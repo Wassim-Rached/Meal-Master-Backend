@@ -1,12 +1,9 @@
 package com.dsi301.mealmasterserver.dto.measurementUnit;
 
-import com.dsi301.mealmasterserver.dto.recipes.GeneralRecipeDTO;
 import com.dsi301.mealmasterserver.entities.MeasurementUnit;
-import com.dsi301.mealmasterserver.entities.Recipe;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
 import java.util.UUID;
 import java.util.stream.StreamSupport;
 

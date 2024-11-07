@@ -1,17 +1,16 @@
 package com.dsi301.mealmasterserver.controllers;
 
-import com.dsi301.mealmasterserver.dto.recipes.GeneralRecipeDTO;
+import com.dsi301.mealmasterserver.dto.recipes.DetailedRecipeDTO;
 import com.dsi301.mealmasterserver.entities.Account;
 import com.dsi301.mealmasterserver.entities.Favorite;
 import com.dsi301.mealmasterserver.entities.Recipe;
-import com.dsi301.mealmasterserver.repositories.AccountRepository;
 import com.dsi301.mealmasterserver.repositories.FavoriteRepository;
 import com.dsi301.mealmasterserver.repositories.RecipeRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -21,16 +20,15 @@ import java.util.UUID;
 public class FavoriteController {
 
     private final FavoriteRepository favoriteRepository;
-    private final AccountRepository accountRepository;
     private final RecipeRepository recipeRepository;
 
     // add recipe to favorites
     @PostMapping
-    public void addFavorite(@RequestParam UUID accountId, @RequestParam UUID recipeId) {
-        Account account = accountRepository.findById(accountId).orElseThrow(() -> new EntityNotFoundException("Account not found"));
+    public void addFavorite(@RequestParam UUID recipeId) {
+        Account account = (Account) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Recipe recipe = recipeRepository.findById(recipeId).orElseThrow(() -> new EntityNotFoundException("Recipe not found"));
 
-        Optional<Favorite> favorite = favoriteRepository.findByAccountIdAndRecipeId(accountId, recipeId);
+        Optional<Favorite> favorite = favoriteRepository.findByAccountIdAndRecipeId(account.getId(), recipeId);
 
         if (favorite.isPresent()) {
             return;
@@ -44,9 +42,11 @@ public class FavoriteController {
     }
 
     // remove recipe from favorites
-    @DeleteMapping
-    public void removeFavorite(@RequestParam UUID accountId, @RequestParam UUID recipeId) {
-        Optional<Favorite> favorite = favoriteRepository.findByAccountIdAndRecipeId(accountId, recipeId);
+    @DeleteMapping("{recipeId}")
+    public void removeFavorite(@PathVariable UUID recipeId) {
+        Account account = (Account) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Optional<Favorite> favorite = favoriteRepository.findByAccountIdAndRecipeId(account.getId(), recipeId);
+
 
         if (favorite.isEmpty()) {
             return;
@@ -55,13 +55,12 @@ public class FavoriteController {
         favoriteRepository.delete(favorite.get());
     }
 
-
     // get all favorite recipes
     @GetMapping
-    public Iterable<GeneralRecipeDTO> getFavorites(@RequestParam UUID accountId) {
-        var recipes = favoriteRepository.findAllByAccountId(accountId);
-        return GeneralRecipeDTO.fromEntities(recipes);
+    public Iterable<DetailedRecipeDTO> getFavorites() {
+        Account account = (Account) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        var recipes = favoriteRepository.findAllByAccountId(account.getId());
+        return DetailedRecipeDTO.fromEntities(recipes);
     }
-
 
 }

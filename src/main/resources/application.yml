@@ -10,3 +10,7 @@ spring:
     hibernate:
       ddl-auto: ${JPA_HIBERNATE_DDL_AUTO:update}
     show-sql: ${JPA_SHOW_SQL:false}
+security:
+  jwt:
+    secret-key: ${JWT_SECRET_KEY:D83fN3F4hBz8PLiT6xZ4QjRm2T9yNcBpM3Wl7jXp0Rc=}
+    expiration-time: ${JWT_EXPIRATION_TIME:86400000}
