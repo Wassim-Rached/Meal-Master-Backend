@@ -8,4 +8,6 @@ import java.util.UUID;
 
 public interface FolderRepository extends JpaRepository<Folder, UUID> {
     Collection<Folder> findAllByAccountId(UUID accountId);
+
+    boolean existsByNameAndAccountId(String name, UUID id);
 }

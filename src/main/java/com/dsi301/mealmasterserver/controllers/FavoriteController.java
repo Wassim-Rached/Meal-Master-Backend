@@ -63,4 +63,11 @@ public class FavoriteController {
         return DetailedRecipeDTO.fromEntities(recipes);
     }
 
+    // is recipe in favorites
+    @GetMapping("{recipeId}")
+    public boolean isFavorite(@PathVariable UUID recipeId) {
+        Account account = (Account) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return favoriteRepository.existsByAccountIdAndRecipeId(account.getId(), recipeId);
+    }
+
 }

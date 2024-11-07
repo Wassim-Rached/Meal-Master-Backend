@@ -26,9 +26,9 @@ public class FolderController {
 
     // get all folders
     @GetMapping
-    public Iterable<GeneralFolderDTO> getFolders() {
+    public Iterable<DetailedFolderDTO> getFolders() {
         Account account = (Account) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return GeneralFolderDTO.fromEntities(folderRepository.findAllByAccountId(account.getId()));
+        return DetailedFolderDTO.fromEntities(folderRepository.findAllByAccountId(account.getId()));
     }
 
     // get details of a folder
@@ -45,17 +45,23 @@ public class FolderController {
 
     // create folder
     @PostMapping
-    public ResponseEntity<UUID> createFolder(@RequestBody CreateFolderDTO createFolderDTO) {
+    public ResponseEntity<String> createFolder(@RequestBody CreateFolderDTO createFolderDTO) {
         Account account = (Account) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        //check if the account already has a folder with the same name
+        if (folderRepository.existsByNameAndAccountId(createFolderDTO.getName(), account.getId())) {
+            return ResponseEntity.status(409).body(createFolderDTO.getName() + " folder already exists");
+        }
+
         Folder folder = createFolderDTO.toEntity(account);
         folderRepository.save(folder);
 
-        return ResponseEntity.ok(folder.getId());
+        return ResponseEntity.ok("Folder created successfully");
     }
 
     // delete folder
     @DeleteMapping("/{folderId}")
-    public ResponseEntity<?> deleteFolder(@PathVariable UUID folderId) {
+    public ResponseEntity<String> deleteFolder(@PathVariable UUID folderId) {
         Folder folder = folderRepository.findById(folderId).orElseThrow(() -> new EntityNotFoundException("Folder not found"));
 
         Account account = (Account) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -69,7 +75,7 @@ public class FolderController {
 
     // add recipe to folder
     @PostMapping("/{folderId}/recipes")
-    public ResponseEntity<?> addRecipesToFolder(@PathVariable UUID folderId, @RequestParam UUID recipeId) {
+    public ResponseEntity<String> addRecipesToFolder(@PathVariable UUID folderId, @RequestParam UUID recipeId) {
         Folder folder = folderRepository.findById(folderId).orElseThrow(() -> new EntityNotFoundException("Folder not found"));
         Recipe recipe = recipeRepository.findById(recipeId).orElseThrow(() -> new EntityNotFoundException("Recipe not found"));
 
@@ -86,7 +92,7 @@ public class FolderController {
 
     // remove recipe from folder
     @DeleteMapping("{folderId}/recipes")
-    public ResponseEntity<?> removeRecipeFromFolder(@PathVariable UUID folderId, @RequestParam UUID recipeId) {
+    public ResponseEntity<String> removeRecipeFromFolder(@PathVariable UUID folderId, @RequestParam UUID recipeId) {
         Folder folder = folderRepository.findById(folderId).orElseThrow(() -> new EntityNotFoundException("Folder not found"));
         Recipe recipe = recipeRepository.findById(recipeId).orElseThrow(() -> new EntityNotFoundException("Recipe not found"));
 

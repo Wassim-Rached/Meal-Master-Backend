@@ -20,4 +20,8 @@ public class DetailedFolderDTO {
         this.name = folder.getName();
         this.recipes = GeneralRecipeDTO.fromEntities(folder.getRecipes());
     }
+
+    public static Iterable<DetailedFolderDTO> fromEntities(Collection<Folder> allByAccountId) {
+        return allByAccountId.stream().map(DetailedFolderDTO::new).toList();
+    }
 }
