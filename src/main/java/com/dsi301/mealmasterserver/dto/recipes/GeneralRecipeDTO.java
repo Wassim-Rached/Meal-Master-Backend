@@ -2,13 +2,14 @@ package com.dsi301.mealmasterserver.dto.recipes;
 
 import com.dsi301.mealmasterserver.dto.instructions.GeneralInstructionDTO;
 import com.dsi301.mealmasterserver.dto.recipeIngredients.GeneralRecipeIngredientDTO;
-import com.dsi301.mealmasterserver.dto.tags.GeneralTagDTO;
 import com.dsi301.mealmasterserver.entities.Recipe;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -26,7 +27,7 @@ public class GeneralRecipeDTO {
     public GeneralRecipeDTO(Recipe recipe) {
         this.id = recipe.getId();
         this.title = recipe.getTitle();
-        this.cover_img_url = recipe.getCover_img_url();
+        this.cover_img_url = recipe.getCoverImgUrl();
         this.cooking_time = recipe.getCookingTime();
         this.serving_size = recipe.getServingSize();
 

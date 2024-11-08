@@ -2,19 +2,19 @@
   {
     "title": "Pancakes",
     "description": "Fluffy pancakes",
-    "cover_img_url": "https://www.allrecipes.com/thmb/6x0Lw9L4MEU8INHnK4tXGRV9XWI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/20334-banana-pancakes-i-DDMFS-4x3-9f291f03044247d48c9ec26917952402.jpg",
-    "cooking_time": 20,
-    "serving_size": 4,
+    "coverImgUrl": "https://www.allrecipes.com/thmb/6x0Lw9L4MEU8INHnK4tXGRV9XWI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/20334-banana-pancakes-i-DDMFS-4x3-9f291f03044247d48c9ec26917952402.jpg",
+    "cookingTime": 20,
+    "servingSize": 4,
     "instructions": [
       {
-        "step_number": 1,
+        "stepNumber": 1,
         "text": "Mix ingredients",
-        "time_estimate": 5
+        "timeEstimate": 5
       },
       {
-        "step_number": 2,
+        "stepNumber": 2,
         "text": "Cook on skillet",
-        "time_estimate": 15
+        "timeEstimate": 15
       }
     ],
     "recipeIngredients": [
@@ -33,34 +33,34 @@
   {
       "title": "Spaghetti Carbonara",
       "description": "A classic Italian pasta dish with eggs, cheese, pancetta, and black pepper.",
-      "cover_img_url": "https://leitesculinaria.com/wp-content/uploads/2024/04/spaghetti-carbonara-1200-500x375.jpg",
-      "cooking_time": 20,
-      "serving_size": 4,
+      "coverImgUrl": "https://leitesculinaria.com/wp-content/uploads/2024/04/spaghetti-carbonara-1200-500x375.jpg",
+      "cookingTime": 20,
+      "servingSize": 4,
       "instructions": [
         {
-          "step_number": 1,
+          "stepNumber": 1,
           "text": "Bring a large pot of salted water to a boil. Add the spaghetti and cook until al dente, about 8 minutes.",
-          "time_estimate": 8
+          "timeEstimate": 8
         },
         {
-          "step_number": 2,
+          "stepNumber": 2,
           "text": "In a skillet, cook pancetta in olive oil until crispy, about 5 minutes.",
-          "time_estimate": 5
+          "timeEstimate": 5
         },
         {
-          "step_number": 3,
+          "stepNumber": 3,
           "text": "Whisk together eggs, Parmesan, and Pecorino in a bowl.",
-          "time_estimate": 2
+          "timeEstimate": 2
         },
         {
-          "step_number": 4,
+          "stepNumber": 4,
           "text": "Drain pasta, reserving 1 cup of water. Add pasta to the skillet and toss with pancetta.",
-          "time_estimate": 2
+          "timeEstimate": 2
         },
         {
-          "step_number": 5,
+          "stepNumber": 5,
           "text": "Remove from heat, add egg mixture, and toss to coat. Add pasta water as needed for a creamy sauce.",
-          "time_estimate": 3
+          "timeEstimate": 3
         }
       ],
       "recipeIngredients": [
@@ -109,44 +109,44 @@
   {
     "title": "Chocolate Chip Cookies",
     "description": "Classic chocolate chip cookies with a crispy edge and chewy center.",
-    "cover_img_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxzpIimMLrjXljel9Hc2ldqyWyaVmNAdmQgg&s",
-    "cooking_time": 25,
-    "serving_size": 24,
+    "coverImgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxzpIimMLrjXljel9Hc2ldqyWyaVmNAdmQgg&s",
+    "cookingTime": 25,
+    "servingSize": 24,
     "instructions": [
       {
-        "step_number": 1,
+        "stepNumber": 1,
         "text": "Preheat the oven to 350°F (175°C).",
-        "time_estimate": 5
+        "timeEstimate": 5
       },
       {
-        "step_number": 2,
+        "stepNumber": 2,
         "text": "In a bowl, cream together the butter, white sugar, and brown sugar until smooth.",
-        "time_estimate": 5
+        "timeEstimate": 5
       },
       {
-        "step_number": 3,
+        "stepNumber": 3,
         "text": "Beat in the eggs one at a time, then stir in the vanilla extract.",
-        "time_estimate": 3
+        "timeEstimate": 3
       },
       {
-        "step_number": 4,
+        "stepNumber": 4,
         "text": "Dissolve baking soda in hot water and add to batter with salt.",
-        "time_estimate": 1
+        "timeEstimate": 1
       },
       {
-        "step_number": 5,
+        "stepNumber": 5,
         "text": "Stir in flour and chocolate chips.",
-        "time_estimate": 2
+        "timeEstimate": 2
       },
       {
-        "step_number": 6,
+        "stepNumber": 6,
         "text": "Drop spoonfuls of dough onto ungreased baking sheets.",
-        "time_estimate": 2
+        "timeEstimate": 2
       },
       {
-        "step_number": 7,
+        "stepNumber": 7,
         "text": "Bake for about 10 minutes, or until edges are golden brown.",
-        "time_estimate": 10
+        "timeEstimate": 10
       }
     ],
     "recipeIngredients": [
@@ -205,34 +205,34 @@
   {
     "title": "Garlic Butter Shrimp Pasta",
     "description": "A quick and delicious pasta dish with succulent shrimp in a garlic butter sauce.",
-    "cover_img_url": "https://familystylefood.com/wp-content/uploads/2023/06/Shrimp-pasta-cooking-2-500x375.jpg",
-    "cooking_time": 20,
-    "serving_size": 4,
+    "coverImgUrl": "https://familystylefood.com/wp-content/uploads/2023/06/Shrimp-pasta-cooking-2-500x375.jpg",
+    "cookingTime": 20,
+    "servingSize": 4,
     "instructions": [
       {
-        "step_number": 1,
+        "stepNumber": 1,
         "text": "Cook pasta in a large pot of salted boiling water until al dente, about 8 minutes. Drain and set aside.",
-        "time_estimate": 8
+        "timeEstimate": 8
       },
       {
-        "step_number": 2,
+        "stepNumber": 2,
         "text": "In a large skillet, melt butter over medium heat. Add garlic and cook until fragrant, about 1 minute.",
-        "time_estimate": 1
+        "timeEstimate": 1
       },
       {
-        "step_number": 3,
+        "stepNumber": 3,
         "text": "Add shrimp to the skillet and cook until pink and cooked through, about 3-4 minutes per side.",
-        "time_estimate": 8
+        "timeEstimate": 8
       },
       {
-        "step_number": 4,
+        "stepNumber": 4,
         "text": "Add lemon juice, salt, and pepper, and stir to combine.",
-        "time_estimate": 1
+        "timeEstimate": 1
       },
       {
-        "step_number": 5,
+        "stepNumber": 5,
         "text": "Add cooked pasta to the skillet, tossing to coat in the garlic butter sauce. Garnish with parsley before serving.",
-        "time_estimate": 2
+        "timeEstimate": 2
       }
     ],
     "recipeIngredients": [
@@ -281,29 +281,29 @@
   {
       "title": "Classic Tomato Basil Soup",
       "description": "A comforting and flavorful tomato basil soup, perfect for chilly days.",
-      "cover_img_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEeeQ6Wyp_Ul1HsfVeIhOUc0lrHy8xklNMUw&s",
-      "cooking_time": 30,
-      "serving_size": 4,
+      "coverImgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEeeQ6Wyp_Ul1HsfVeIhOUc0lrHy8xklNMUw&s",
+      "cookingTime": 30,
+      "servingSize": 4,
       "instructions": [
         {
-          "step_number": 1,
+          "stepNumber": 1,
           "text": "In a large pot, heat olive oil over medium heat. Add onion and cook until softened, about 5 minutes.",
-          "time_estimate": 5
+          "timeEstimate": 5
         },
         {
-          "step_number": 2,
+          "stepNumber": 2,
           "text": "Add garlic and cook for another minute until fragrant.",
-          "time_estimate": 1
+          "timeEstimate": 1
         },
         {
-          "step_number": 3,
+          "stepNumber": 3,
           "text": "Add crushed tomatoes, vegetable broth, basil, salt, and pepper. Bring to a simmer and cook for 20 minutes.",
-          "time_estimate": 20
+          "timeEstimate": 20
         },
         {
-          "step_number": 4,
+          "stepNumber": 4,
           "text": "Use an immersion blender to blend the soup until smooth. Serve hot, garnished with fresh basil.",
-          "time_estimate": 4
+          "timeEstimate": 4
         }
       ],
       "recipeIngredients": [
@@ -352,34 +352,34 @@
   {
       "title": "Chicken Alfredo",
       "description": "A creamy and indulgent chicken alfredo pasta with rich sauce and tender chicken.",
-      "cover_img_url": "https://www.budgetbytes.com/wp-content/uploads/2022/07/Chicken-Alfredo-above.jpg",
-      "cooking_time": 30,
-      "serving_size": 4,
+      "coverImgUrl": "https://www.budgetbytes.com/wp-content/uploads/2022/07/Chicken-Alfredo-above.jpg",
+      "cookingTime": 30,
+      "servingSize": 4,
       "instructions": [
         {
-          "step_number": 1,
+          "stepNumber": 1,
           "text": "Cook the pasta according to the package instructions. Drain and set aside.",
-          "time_estimate": 10
+          "timeEstimate": 10
         },
         {
-          "step_number": 2,
+          "stepNumber": 2,
           "text": "Season the chicken breasts with salt and pepper. Heat olive oil in a skillet over medium heat. Cook the chicken for 6-7 minutes on each side until golden and cooked through.",
-          "time_estimate": 14
+          "timeEstimate": 14
         },
         {
-          "step_number": 3,
+          "stepNumber": 3,
           "text": "Remove the chicken from the skillet and slice it into strips.",
-          "time_estimate": 3
+          "timeEstimate": 3
         },
         {
-          "step_number": 4,
+          "stepNumber": 4,
           "text": "In the same skillet, melt the butter and garlic, cooking for 1-2 minutes. Add the heavy cream, Parmesan, and seasoning, stirring until smooth and heated through.",
-          "time_estimate": 5
+          "timeEstimate": 5
         },
         {
-          "step_number": 5,
+          "stepNumber": 5,
           "text": "Add the cooked pasta to the sauce and toss to coat. Top with sliced chicken and garnish with parsley.",
-          "time_estimate": 3
+          "timeEstimate": 3
         }
       ],
       "recipeIngredients": [

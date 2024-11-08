@@ -23,7 +23,7 @@ public class Recipe {
 
     private String description;
 
-    private String cover_img_url;
+    private String coverImgUrl;
 
     @Column(nullable = false, name = "cooking_time")
     private Integer cookingTime;
@@ -37,16 +37,6 @@ public class Recipe {
     @OneToMany(mappedBy = "recipe", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<RecipeIngredient> recipeIngredients;
 
-    @ManyToMany(
-            fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL
-    )
-    @JoinTable(
-            name = "recipe_tags",
-            joinColumns = @JoinColumn(name = "recipe_id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id")
-    )
-    private List<Tag> tags;
 
     @Override
     public String toString() {
@@ -54,7 +44,7 @@ public class Recipe {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", cover_img_url='" + cover_img_url + '\'' +
+                ", cover_img_url='" + coverImgUrl + '\'' +
                 ", cooking_time=" + cookingTime +
                 ", serving_size=" + servingSize +
                 ", instructions=" + instructions +

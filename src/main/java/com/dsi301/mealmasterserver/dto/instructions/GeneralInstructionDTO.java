@@ -16,8 +16,8 @@ public class GeneralInstructionDTO {
 
     public GeneralInstructionDTO(Instruction instruction) {
         this.id = instruction.getId();
-        this.step_number = instruction.getStep_number();
+        this.step_number = instruction.getStepNumber();
         this.text = instruction.getText();
-        this.time_estimate = instruction.getTime_estimate();
+        this.time_estimate = instruction.getTimeEstimate();
     }
 }

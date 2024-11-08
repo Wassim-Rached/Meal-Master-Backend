@@ -18,12 +18,12 @@ public class Instruction {
     private UUID id;
 
     @Column(nullable = false)
-    private Integer step_number;
+    private Integer stepNumber;
     @Column(nullable = false)
     private String text;
 
     @Column(nullable = false)
-    private Integer time_estimate;
+    private Integer timeEstimate;
 
     @ManyToOne
     private Recipe recipe;
@@ -32,9 +32,9 @@ public class Instruction {
     public String toString() {
         return "Instruction{" +
                 "id=" + id +
-                ", step_number=" + step_number +
+                ", step_number=" + stepNumber +
                 ", text='" + text + '\'' +
-                ", time_estimate=" + time_estimate +
+                ", time_estimate=" + timeEstimate +
                 '}';
     }
 }

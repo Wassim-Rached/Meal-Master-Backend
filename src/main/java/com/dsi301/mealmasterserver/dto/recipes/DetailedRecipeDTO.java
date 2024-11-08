@@ -29,9 +29,9 @@ public class DetailedRecipeDTO {
         this.id = recipe.getId();
         this.title = recipe.getTitle();
         this.description = recipe.getDescription();
-        this.cover_img_url = recipe.getCover_img_url();
-        this.cooking_time = recipe.getCooking_time();
-        this.serving_size = recipe.getServing_size();
+        this.cover_img_url = recipe.getCoverImgUrl();
+        this.cooking_time = recipe.getCookingTime();
+        this.serving_size = recipe.getServingSize();
 
         this.instructions = recipe.getInstructions().stream()
                 .map(GeneralInstructionDTO::new)
