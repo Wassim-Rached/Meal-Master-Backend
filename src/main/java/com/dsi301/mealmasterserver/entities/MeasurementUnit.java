@@ -38,6 +38,7 @@ public class MeasurementUnit {
 
         return this.name.equals(that.name);
     }
+
     @Override
     public int hashCode() {
         return name.hashCode();
@@ -51,27 +52,31 @@ public class MeasurementUnit {
                 '}';
     }
 
-    public static Collection<MeasurementUnit> init() {
+    public static List<String> initNames() {
         return List.of(
-                new MeasurementUnit("Cups"),
-                new MeasurementUnit("Tablespoons"),
-                new MeasurementUnit("Teaspoons"),
-                new MeasurementUnit("Grams"),
-                new MeasurementUnit("Milliliters"),
-                new MeasurementUnit("Ounces"),
-                new MeasurementUnit("Pounds"),
-                new MeasurementUnit("Kilograms"),
-                new MeasurementUnit("Liters"),
-                new MeasurementUnit("Gallons"),
-                new MeasurementUnit("Quarts"),
-                new MeasurementUnit("Pints"),
-                new MeasurementUnit("Inches"),
-                new MeasurementUnit("Centimeters"),
-                new MeasurementUnit("Pieces"),
-                new MeasurementUnit("Whole"),
-                new MeasurementUnit("Slices"),
-                new MeasurementUnit("Leaves"),
-                new MeasurementUnit("Cloves")
+                "Cups",
+                "Tablespoons",
+                "Teaspoons",
+                "Grams",
+                "Milliliters",
+                "Ounces",
+                "Pounds",
+                "Kilograms",
+                "Liters",
+                "Gallons",
+                "Quarts",
+                "Pints",
+                "Inches",
+                "Centimeters",
+                "Pieces",
+                "Whole",
+                "Slices",
+                "Leaves",
+                "Cloves"
         );
+    }
+
+    public static Collection<MeasurementUnit> init() {
+        return initNames().stream().map(MeasurementUnit::new).toList();
     }
 }

@@ -51,31 +51,35 @@ public class Ingredient {
                 '}';
     }
 
-    public static Collection<Ingredient> init() {
+    public static List<String> initNames() {
         return List.of(
-                new Ingredient("Flour"),
-                new Ingredient("Sugar"),
-                new Ingredient("Eggs"),
-                new Ingredient("Milk"),
-                new Ingredient("Butter"),
-                new Ingredient("Salt"),
-                new Ingredient("Pepper"),
-                new Ingredient("Olive oil"),
-                new Ingredient("Vegetable oil"),
-                new Ingredient("Baking powder"),
-                new Ingredient("Yeast"),
-                new Ingredient("Vanilla extract"),
-                new Ingredient("Cocoa powder"),
-                new Ingredient("Honey"),
-                new Ingredient("Brown sugar"),
-                new Ingredient("Baking soda"),
-                new Ingredient("Cinnamon"),
-                new Ingredient("Nutmeg"),
-                new Ingredient("Lemon juice"),
-                new Ingredient("Garlic"),
-                new Ingredient("Onion"),
-                new Ingredient("Tomato paste"),
-                new Ingredient("Soy sauce")
+                "Flour",
+                "Sugar",
+                "Eggs",
+                "Milk",
+                "Butter",
+                "Salt",
+                "Pepper",
+                "Olive oil",
+                "Vegetable oil",
+                "Baking powder",
+                "Yeast",
+                "Vanilla extract",
+                "Cocoa powder",
+                "Honey",
+                "Brown sugar",
+                "Baking soda",
+                "Cinnamon",
+                "Nutmeg",
+                "Lemon juice",
+                "Garlic",
+                "Onion",
+                "Tomato paste",
+                "Soy sauce"
         );
+    }
+
+    public static Collection<Ingredient> init() {
+        return initNames().stream().map(Ingredient::new).toList();
     }
 }

@@ -2,7 +2,6 @@ package com.dsi301.mealmasterserver.controllers;
 
 import com.dsi301.mealmasterserver.dto.folders.CreateFolderDTO;
 import com.dsi301.mealmasterserver.dto.folders.DetailedFolderDTO;
-import com.dsi301.mealmasterserver.dto.folders.GeneralFolderDTO;
 import com.dsi301.mealmasterserver.entities.Account;
 import com.dsi301.mealmasterserver.entities.Folder;
 import com.dsi301.mealmasterserver.entities.Recipe;
