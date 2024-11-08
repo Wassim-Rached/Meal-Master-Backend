@@ -14,3 +14,6 @@ security:
   jwt:
     secret-key: ${JWT_SECRET_KEY:D83fN3F4hBz8PLiT6xZ4QjRm2T9yNcBpM3Wl7jXp0Rc=}
     expiration-time: ${JWT_EXPIRATION_TIME:86400000}
+    properties:
+      hibernate:
+        format_sql: ${JPA_FORMAT_SQL:false}

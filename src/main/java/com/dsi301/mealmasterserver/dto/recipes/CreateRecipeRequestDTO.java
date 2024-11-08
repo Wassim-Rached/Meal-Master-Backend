@@ -5,8 +5,10 @@ import com.dsi301.mealmasterserver.dto.recipeIngredients.CreateRecipeIngredientR
 import com.dsi301.mealmasterserver.entities.Instruction;
 import com.dsi301.mealmasterserver.entities.Recipe;
 import com.dsi301.mealmasterserver.entities.RecipeIngredient;
+import com.dsi301.mealmasterserver.entities.Tag;
 import com.dsi301.mealmasterserver.exceptions.InputValidationException;
 import com.dsi301.mealmasterserver.interfaces.dto.ToEntity;
+import com.dsi301.mealmasterserver.repositories.TagRepository;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,19 +16,20 @@ import java.util.List;
 
 @Getter
 @Setter
-public class CreateRecipeRequestDTO implements ToEntity<Recipe,Void> {
+public class CreateRecipeRequestDTO implements ToEntity<Recipe, TagRepository> {
     private String title;
     private String description;
     private String cover_img_url;
     private Integer cooking_time;
     private Integer serving_size;
+    private List<String> tags;
 
     private List<CreateInstructionRequestDTO> instructions;
 
     private List<CreateRecipeIngredientRequestDTO> recipeIngredients;
 
     @Override
-    public Recipe toEntity(Void aVoid){
+    public Recipe toEntity(TagRepository tagRepository) {
         if (title == null || title.isBlank())
             throw new InputValidationException("Title is required");
         if (cooking_time == null)
@@ -38,12 +41,17 @@ public class CreateRecipeRequestDTO implements ToEntity<Recipe,Void> {
         if (recipeIngredients == null)
             throw new InputValidationException("Recipe ingredients are required");
 
+        List<Tag> tagEntities = tags.stream()
+                .map(tag -> tagRepository.findByName(tag).orElseGet(() -> tagRepository.save(Tag.builder().name(tag).build())))
+                .toList();
+
         Recipe recipe = Recipe.builder()
                 .title(title)
                 .description(description)
                 .cover_img_url(cover_img_url)
-                .cooking_time(cooking_time)
-                .serving_size(serving_size)
+                .cookingTime(cooking_time)
+                .servingSize(serving_size)
+                .tags(tagEntities)
                 .build();
 
         List<Instruction> instructions = this.instructions.stream()

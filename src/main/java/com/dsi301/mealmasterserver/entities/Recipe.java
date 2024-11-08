@@ -25,11 +25,11 @@ public class Recipe {
 
     private String cover_img_url;
 
-    @Column(nullable = false)
-    private Integer cooking_time;
+    @Column(nullable = false, name = "cooking_time")
+    private Integer cookingTime;
 
-    @Column(nullable = false)
-    private Integer serving_size;
+    @Column(nullable = false, name = "serving_size")
+    private Integer servingSize;
 
     @OneToMany(mappedBy = "recipe", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Instruction> instructions;
@@ -37,6 +37,16 @@ public class Recipe {
     @OneToMany(mappedBy = "recipe", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<RecipeIngredient> recipeIngredients;
 
+    @ManyToMany(
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL
+    )
+    @JoinTable(
+            name = "recipe_tags",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+    private List<Tag> tags;
 
     @Override
     public String toString() {
@@ -45,8 +55,8 @@ public class Recipe {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", cover_img_url='" + cover_img_url + '\'' +
-                ", cooking_time=" + cooking_time +
-                ", serving_size=" + serving_size +
+                ", cooking_time=" + cookingTime +
+                ", serving_size=" + servingSize +
                 ", instructions=" + instructions +
                 ", recipeIngredients=" + recipeIngredients +
                 '}';
