@@ -8,6 +8,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -24,10 +25,19 @@ public class DataInitializer implements CommandLineRunner {
     private final IngredientRepository ingredientRepository;
     private final RecipeRepository recipeRepository;
     private final ObjectMapper objectMapper;
+    private final AccountRepository accountRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     @Transactional
     public void run(String... args) throws Exception {
+        // Insert Account
+        Account account = new Account();
+        account.setUsername("masterChef");
+        account.setPassword(passwordEncoder.encode("password"));
+        accountRepository.findByUsername(account.getUsername())
+                .orElseGet(() -> accountRepository.save(account));
+
         // Insert Measurement Units
         List<String> measurementUnitNames = readJson("measurement_units.json", new TypeReference<>() {});
         for (String name : measurementUnitNames) {
@@ -81,6 +91,7 @@ public class DataInitializer implements CommandLineRunner {
                 instruction.setRecipe(recipe);
             }
 
+            recipe.setOwner(account);
             recipeRepository.save(recipe);
         }
     }

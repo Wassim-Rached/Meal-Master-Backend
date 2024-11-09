@@ -1,5 +1,6 @@
 package com.dsi301.mealmasterserver.dto.recipes;
 
+import com.dsi301.mealmasterserver.dto.accounts.GeneralAccountDTO;
 import com.dsi301.mealmasterserver.dto.instructions.GeneralInstructionDTO;
 import com.dsi301.mealmasterserver.dto.recipeIngredients.GeneralRecipeIngredientDTO;
 import com.dsi301.mealmasterserver.entities.Recipe;
@@ -19,6 +20,7 @@ public class GeneralRecipeDTO {
     private String cover_img_url;
     private Integer cooking_time;
     private Integer serving_size;
+    private GeneralAccountDTO owner;
 
     private List<GeneralInstructionDTO> instructions;
 
@@ -30,6 +32,7 @@ public class GeneralRecipeDTO {
         this.cover_img_url = recipe.getCoverImgUrl();
         this.cooking_time = recipe.getCookingTime();
         this.serving_size = recipe.getServingSize();
+        this.owner = new GeneralAccountDTO(recipe.getOwner());
 
         this.instructions = recipe.getInstructions().stream()
                 .map(GeneralInstructionDTO::new)
