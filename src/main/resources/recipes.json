@@ -1,0 +1,438 @@
+[
+  {
+    "title": "Pancakes",
+    "description": "Fluffy pancakes",
+    "coverImgUrl": "https://www.allrecipes.com/thmb/6x0Lw9L4MEU8INHnK4tXGRV9XWI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/20334-banana-pancakes-i-DDMFS-4x3-9f291f03044247d48c9ec26917952402.jpg",
+    "cookingTime": 20,
+    "servingSize": 4,
+    "instructions": [
+      {
+        "stepNumber": 1,
+        "text": "Mix ingredients",
+        "timeEstimate": 5
+      },
+      {
+        "stepNumber": 2,
+        "text": "Cook on skillet",
+        "timeEstimate": 15
+      }
+    ],
+    "recipeIngredients": [
+      {
+        "ingredient": "flour",
+        "amount": 2,
+        "measurementUnit": "cups"
+      },
+      {
+        "ingredient": "milk",
+        "amount": 1,
+        "measurementUnit": "cups"
+      }
+    ]
+  },
+  {
+      "title": "Spaghetti Carbonara",
+      "description": "A classic Italian pasta dish with eggs, cheese, pancetta, and black pepper.",
+      "coverImgUrl": "https://leitesculinaria.com/wp-content/uploads/2024/04/spaghetti-carbonara-1200-500x375.jpg",
+      "cookingTime": 20,
+      "servingSize": 4,
+      "instructions": [
+        {
+          "stepNumber": 1,
+          "text": "Bring a large pot of salted water to a boil. Add the spaghetti and cook until al dente, about 8 minutes.",
+          "timeEstimate": 8
+        },
+        {
+          "stepNumber": 2,
+          "text": "In a skillet, cook pancetta in olive oil until crispy, about 5 minutes.",
+          "timeEstimate": 5
+        },
+        {
+          "stepNumber": 3,
+          "text": "Whisk together eggs, Parmesan, and Pecorino in a bowl.",
+          "timeEstimate": 2
+        },
+        {
+          "stepNumber": 4,
+          "text": "Drain pasta, reserving 1 cup of water. Add pasta to the skillet and toss with pancetta.",
+          "timeEstimate": 2
+        },
+        {
+          "stepNumber": 5,
+          "text": "Remove from heat, add egg mixture, and toss to coat. Add pasta water as needed for a creamy sauce.",
+          "timeEstimate": 3
+        }
+      ],
+      "recipeIngredients": [
+        {
+          "ingredient": "spaghetti",
+          "amount": 400,
+          "measurementUnit": "grams"
+        },
+        {
+          "ingredient": "olive oil",
+          "amount": 2,
+          "measurementUnit": "tablespoons"
+        },
+        {
+          "ingredient": "pancetta",
+          "amount": 200,
+          "measurementUnit": "Grams"
+        },
+        {
+          "ingredient": "eggs",
+          "amount": 2,
+          "measurementUnit": "whole"
+        },
+        {
+          "ingredient": "parmesan",
+          "amount": 1,
+          "measurementUnit": "cups"
+        },
+        {
+          "ingredient": "pecorino",
+          "amount": 1,
+          "measurementUnit": "cups"
+        },
+        {
+          "ingredient": "salt",
+          "amount": 1,
+          "measurementUnit": "whole"
+        },
+        {
+          "ingredient": "pepper",
+          "amount": 1,
+          "measurementUnit": "whole"
+        }
+      ]
+    },
+  {
+    "title": "Chocolate Chip Cookies",
+    "description": "Classic chocolate chip cookies with a crispy edge and chewy center.",
+    "coverImgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxzpIimMLrjXljel9Hc2ldqyWyaVmNAdmQgg&s",
+    "cookingTime": 25,
+    "servingSize": 24,
+    "instructions": [
+      {
+        "stepNumber": 1,
+        "text": "Preheat the oven to 350°F (175°C).",
+        "timeEstimate": 5
+      },
+      {
+        "stepNumber": 2,
+        "text": "In a bowl, cream together the butter, white sugar, and brown sugar until smooth.",
+        "timeEstimate": 5
+      },
+      {
+        "stepNumber": 3,
+        "text": "Beat in the eggs one at a time, then stir in the vanilla extract.",
+        "timeEstimate": 3
+      },
+      {
+        "stepNumber": 4,
+        "text": "Dissolve baking soda in hot water and add to batter with salt.",
+        "timeEstimate": 1
+      },
+      {
+        "stepNumber": 5,
+        "text": "Stir in flour and chocolate chips.",
+        "timeEstimate": 2
+      },
+      {
+        "stepNumber": 6,
+        "text": "Drop spoonfuls of dough onto ungreased baking sheets.",
+        "timeEstimate": 2
+      },
+      {
+        "stepNumber": 7,
+        "text": "Bake for about 10 minutes, or until edges are golden brown.",
+        "timeEstimate": 10
+      }
+    ],
+    "recipeIngredients": [
+      {
+        "ingredient": "butter",
+        "amount": 1,
+        "measurementUnit": "cups"
+      },
+      {
+        "ingredient": "white sugar",
+        "amount": 1,
+        "measurementUnit": "cups"
+      },
+      {
+        "ingredient": "brown sugar",
+        "amount": 1,
+        "measurementUnit": "cups"
+      },
+      {
+        "ingredient": "eggs",
+        "amount": 2,
+        "measurementUnit": "whole"
+      },
+      {
+        "ingredient": "vanilla extract",
+        "amount": 2,
+        "measurementUnit": "teaspoons"
+      },
+      {
+        "ingredient": "baking soda",
+        "amount": 1,
+        "measurementUnit": "teaspoons"
+      },
+      {
+        "ingredient": "hot water",
+        "amount": 2,
+        "measurementUnit": "teaspoons"
+      },
+      {
+        "ingredient": "salt",
+        "amount": 0.5,
+        "measurementUnit": "teaspoons"
+      },
+      {
+        "ingredient": "flour",
+        "amount": 3,
+        "measurementUnit": "cups"
+      },
+      {
+        "ingredient": "chocolate chips",
+        "amount": 2,
+        "measurementUnit": "cups"
+      }
+    ]
+  },
+  {
+    "title": "Garlic Butter Shrimp Pasta",
+    "description": "A quick and delicious pasta dish with succulent shrimp in a garlic butter sauce.",
+    "coverImgUrl": "https://familystylefood.com/wp-content/uploads/2023/06/Shrimp-pasta-cooking-2-500x375.jpg",
+    "cookingTime": 20,
+    "servingSize": 4,
+    "instructions": [
+      {
+        "stepNumber": 1,
+        "text": "Cook pasta in a large pot of salted boiling water until al dente, about 8 minutes. Drain and set aside.",
+        "timeEstimate": 8
+      },
+      {
+        "stepNumber": 2,
+        "text": "In a large skillet, melt butter over medium heat. Add garlic and cook until fragrant, about 1 minute.",
+        "timeEstimate": 1
+      },
+      {
+        "stepNumber": 3,
+        "text": "Add shrimp to the skillet and cook until pink and cooked through, about 3-4 minutes per side.",
+        "timeEstimate": 8
+      },
+      {
+        "stepNumber": 4,
+        "text": "Add lemon juice, salt, and pepper, and stir to combine.",
+        "timeEstimate": 1
+      },
+      {
+        "stepNumber": 5,
+        "text": "Add cooked pasta to the skillet, tossing to coat in the garlic butter sauce. Garnish with parsley before serving.",
+        "timeEstimate": 2
+      }
+    ],
+    "recipeIngredients": [
+      {
+        "ingredient": "spaghetti",
+        "amount": 12,
+        "measurementUnit": "ounces"
+      },
+      {
+        "ingredient": "butter",
+        "amount": 4,
+        "measurementUnit": "tablespoons"
+      },
+      {
+        "ingredient": "garlic",
+        "amount": 4,
+        "measurementUnit": "cloves"
+      },
+      {
+        "ingredient": "shrimp",
+        "amount": 1,
+        "measurementUnit": "pounds"
+      },
+      {
+        "ingredient": "lemon juice",
+        "amount": 2,
+        "measurementUnit": "tablespoons"
+      },
+      {
+        "ingredient": "salt",
+        "amount": 0.5,
+        "measurementUnit": "teaspoons"
+      },
+      {
+        "ingredient": "pepper",
+        "amount": 0.25,
+        "measurementUnit": "teaspoons"
+      },
+      {
+        "ingredient": "parsley",
+        "amount": 2,
+        "measurementUnit": "tablespoons"
+      }
+    ]
+  },
+  {
+      "title": "Classic Tomato Basil Soup",
+      "description": "A comforting and flavorful tomato basil soup, perfect for chilly days.",
+      "coverImgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEeeQ6Wyp_Ul1HsfVeIhOUc0lrHy8xklNMUw&s",
+      "cookingTime": 30,
+      "servingSize": 4,
+      "instructions": [
+        {
+          "stepNumber": 1,
+          "text": "In a large pot, heat olive oil over medium heat. Add onion and cook until softened, about 5 minutes.",
+          "timeEstimate": 5
+        },
+        {
+          "stepNumber": 2,
+          "text": "Add garlic and cook for another minute until fragrant.",
+          "timeEstimate": 1
+        },
+        {
+          "stepNumber": 3,
+          "text": "Add crushed tomatoes, vegetable broth, basil, salt, and pepper. Bring to a simmer and cook for 20 minutes.",
+          "timeEstimate": 20
+        },
+        {
+          "stepNumber": 4,
+          "text": "Use an immersion blender to blend the soup until smooth. Serve hot, garnished with fresh basil.",
+          "timeEstimate": 4
+        }
+      ],
+      "recipeIngredients": [
+        {
+          "ingredient": "olive oil",
+          "amount": 2,
+          "measurementUnit": "tablespoons"
+        },
+        {
+          "ingredient": "onion",
+          "amount": 1,
+          "measurementUnit": "whole"
+        },
+        {
+          "ingredient": "garlic",
+          "amount": 3,
+          "measurementUnit": "cloves"
+        },
+        {
+          "ingredient": "crushed tomatoes",
+          "amount": 28,
+          "measurementUnit": "ounces"
+        },
+        {
+          "ingredient": "vegetable broth",
+          "amount": 2,
+          "measurementUnit": "cups"
+        },
+        {
+          "ingredient": "basil",
+          "amount": 0.25,
+          "measurementUnit": "cups"
+        },
+        {
+          "ingredient": "salt",
+          "amount": 0.5,
+          "measurementUnit": "teaspoons"
+        },
+        {
+          "ingredient": "pepper",
+          "amount": 0.25,
+          "measurementUnit": "teaspoons"
+        }
+      ]
+    },
+  {
+      "title": "Chicken Alfredo",
+      "description": "A creamy and indulgent chicken alfredo pasta with rich sauce and tender chicken.",
+      "coverImgUrl": "https://www.budgetbytes.com/wp-content/uploads/2022/07/Chicken-Alfredo-above.jpg",
+      "cookingTime": 30,
+      "servingSize": 4,
+      "instructions": [
+        {
+          "stepNumber": 1,
+          "text": "Cook the pasta according to the package instructions. Drain and set aside.",
+          "timeEstimate": 10
+        },
+        {
+          "stepNumber": 2,
+          "text": "Season the chicken breasts with salt and pepper. Heat olive oil in a skillet over medium heat. Cook the chicken for 6-7 minutes on each side until golden and cooked through.",
+          "timeEstimate": 14
+        },
+        {
+          "stepNumber": 3,
+          "text": "Remove the chicken from the skillet and slice it into strips.",
+          "timeEstimate": 3
+        },
+        {
+          "stepNumber": 4,
+          "text": "In the same skillet, melt the butter and garlic, cooking for 1-2 minutes. Add the heavy cream, Parmesan, and seasoning, stirring until smooth and heated through.",
+          "timeEstimate": 5
+        },
+        {
+          "stepNumber": 5,
+          "text": "Add the cooked pasta to the sauce and toss to coat. Top with sliced chicken and garnish with parsley.",
+          "timeEstimate": 3
+        }
+      ],
+      "recipeIngredients": [
+        {
+          "ingredient": "chicken breasts",
+          "amount": 2,
+          "measurementUnit": "whole"
+        },
+        {
+          "ingredient": "olive oil",
+          "amount": 1,
+          "measurementUnit": "tablespoons"
+        },
+        {
+          "ingredient": "salt",
+          "amount": 1,
+          "measurementUnit": "teaspoons"
+        },
+        {
+          "ingredient": "pepper",
+          "amount": 1,
+          "measurementUnit": "teaspoons"
+        },
+        {
+          "ingredient": "pasta",
+          "amount": 250,
+          "measurementUnit": "grams"
+        },
+        {
+          "ingredient": "butter",
+          "amount": 0.5,
+          "measurementUnit": "cups"
+        },
+        {
+          "ingredient": "garlic",
+          "amount": 2,
+          "measurementUnit": "cloves"
+        },
+        {
+          "ingredient": "heavy cream",
+          "amount": 1,
+          "measurementUnit": "cups"
+        },
+        {
+          "ingredient": "parmesan",
+          "amount": 1,
+          "measurementUnit": "cup"
+        },
+        {
+          "ingredient": "parsley",
+          "amount": 1,
+          "measurementUnit": "tablespoons"
+        }
+      ]
+    }
+]
