@@ -37,6 +37,10 @@ public class Recipe {
     @OneToMany(mappedBy = "recipe", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<RecipeIngredient> recipeIngredients;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "owner_account_id")
+    private Account owner;
+
 
     @Override
     public String toString() {

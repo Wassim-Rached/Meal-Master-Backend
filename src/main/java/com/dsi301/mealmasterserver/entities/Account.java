@@ -6,9 +6,7 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Getter
@@ -22,6 +20,9 @@ public class Account implements UserDetails {
     private String username;
     @Column(nullable = false)
     private String password;
+
+    @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Recipe> recipes = new HashSet<>();
 
     @Override
     public String getPassword() {

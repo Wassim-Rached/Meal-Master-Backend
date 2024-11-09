@@ -3,6 +3,7 @@ package com.dsi301.mealmasterserver.controllers;
 import com.dsi301.mealmasterserver.dto.recipes.CreateRecipeRequestDTO;
 import com.dsi301.mealmasterserver.dto.recipes.DetailedRecipeDTO;
 import com.dsi301.mealmasterserver.dto.recipes.GeneralRecipeDTO;
+import com.dsi301.mealmasterserver.entities.Account;
 import com.dsi301.mealmasterserver.entities.Ingredient;
 import com.dsi301.mealmasterserver.entities.MeasurementUnit;
 import com.dsi301.mealmasterserver.entities.Recipe;
@@ -17,6 +18,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -76,7 +78,12 @@ public class RecipesController {
     // create
     @PostMapping
     public UUID createRecipe(@RequestBody CreateRecipeRequestDTO requestBody) {
+        Account account = (Account) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
         Recipe recipe = requestBody.toEntity(null);
+        recipe.setOwner(account);
+        account.getRecipes().add(recipe);
+
         // get its ingredients and measurement units by name
         for (var recipeIngredient : recipe.getRecipeIngredients()){
             Ingredient ingredient = ingredientRepository.findById(recipeIngredient.getIngredient().getId()).orElseThrow(() -> new EntityNotFoundException("Ingredient not found with id: " + recipeIngredient.getIngredient().getId()));
