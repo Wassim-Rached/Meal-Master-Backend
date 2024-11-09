@@ -4,6 +4,7 @@ package com.dsi301.mealmasterserver.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
@@ -26,6 +27,10 @@ public class Ingredient {
     @OneToMany(mappedBy = "ingredient")
     private List<RecipeIngredient> recipeIngredients;
 
+    public Ingredient( String name) {
+        this.name = name;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -44,5 +49,37 @@ public class Ingredient {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    public static List<String> initNames() {
+        return List.of(
+                "Flour",
+                "Sugar",
+                "Eggs",
+                "Milk",
+                "Butter",
+                "Salt",
+                "Pepper",
+                "Olive oil",
+                "Vegetable oil",
+                "Baking powder",
+                "Yeast",
+                "Vanilla extract",
+                "Cocoa powder",
+                "Honey",
+                "Brown sugar",
+                "Baking soda",
+                "Cinnamon",
+                "Nutmeg",
+                "Lemon juice",
+                "Garlic",
+                "Onion",
+                "Tomato paste",
+                "Soy sauce"
+        );
+    }
+
+    public static Collection<Ingredient> init() {
+        return initNames().stream().map(Ingredient::new).toList();
     }
 }

@@ -30,7 +30,7 @@ public class RecipeIngredient {
     private MeasurementUnit measurementUnit;
 
     @Override
-public String toString() {
+    public String toString() {
         return "RecipeIngredient{" +
                 "id=" + id +
                 ", amount=" + amount +

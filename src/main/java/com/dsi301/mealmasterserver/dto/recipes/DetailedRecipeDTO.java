@@ -7,16 +7,17 @@ import com.dsi301.mealmasterserver.entities.Recipe;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Getter
 @Setter
-public class GeneralRecipeDTO {
+public class DetailedRecipeDTO {
     private UUID id;
     private String title;
+    private String description;
     private String cover_img_url;
     private Integer cooking_time;
     private Integer serving_size;
@@ -26,13 +27,15 @@ public class GeneralRecipeDTO {
 
     private List<GeneralRecipeIngredientDTO> recipeIngredients;
 
-    public GeneralRecipeDTO(Recipe recipe) {
+    public DetailedRecipeDTO(Recipe recipe) {
         this.id = recipe.getId();
         this.title = recipe.getTitle();
+        this.description = recipe.getDescription();
         this.cover_img_url = recipe.getCoverImgUrl();
         this.cooking_time = recipe.getCookingTime();
         this.serving_size = recipe.getServingSize();
         this.owner = new GeneralAccountDTO(recipe.getOwner());
+
 
         this.instructions = recipe.getInstructions().stream()
                 .map(GeneralInstructionDTO::new)
@@ -43,9 +46,9 @@ public class GeneralRecipeDTO {
                 .collect(Collectors.toList());
     }
 
-    public static Collection<GeneralRecipeDTO> fromEntities(Collection<Recipe> recipes) {
-        return recipes.stream()
-                .map(GeneralRecipeDTO::new)
+    public static Iterable<DetailedRecipeDTO> fromEntities(Iterable<Recipe> recipes) {
+        return StreamSupport.stream(recipes.spliterator(), false)
+                .map(DetailedRecipeDTO::new)
                 .toList();
     }
 }

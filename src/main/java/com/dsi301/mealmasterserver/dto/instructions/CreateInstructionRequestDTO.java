@@ -24,9 +24,9 @@ public class CreateInstructionRequestDTO implements ToEntity<Instruction, Recipe
             throw new InputValidationException("Time estimate is required");
 
         return Instruction.builder()
-                .step_number(step_number)
+                .stepNumber(step_number)
                 .text(text)
-                .time_estimate(time_estimate)
+                .timeEstimate(time_estimate)
                 .recipe(recipe)
                 .build();
     }
