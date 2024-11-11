@@ -17,9 +17,9 @@ import java.util.stream.Collectors;
 public class GeneralRecipeDTO {
     private UUID id;
     private String title;
-    private String cover_img_url;
-    private Integer cooking_time;
-    private Integer serving_size;
+    private String coverImgUrl;
+    private Integer cookingTime;
+    private Integer servingSize;
     private GeneralAccountDTO owner;
 
     private List<GeneralInstructionDTO> instructions;
@@ -29,9 +29,9 @@ public class GeneralRecipeDTO {
     public GeneralRecipeDTO(Recipe recipe) {
         this.id = recipe.getId();
         this.title = recipe.getTitle();
-        this.cover_img_url = recipe.getCoverImgUrl();
-        this.cooking_time = recipe.getCookingTime();
-        this.serving_size = recipe.getServingSize();
+        this.coverImgUrl = recipe.getCoverImgUrl();
+        this.cookingTime = recipe.getCookingTime();
+        this.servingSize = recipe.getServingSize();
         this.owner = new GeneralAccountDTO(recipe.getOwner());
 
         this.instructions = recipe.getInstructions().stream()

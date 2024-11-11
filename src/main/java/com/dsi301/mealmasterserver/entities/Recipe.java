@@ -3,6 +3,7 @@ package com.dsi301.mealmasterserver.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,10 +33,10 @@ public class Recipe {
     private Integer servingSize;
 
     @OneToMany(mappedBy = "recipe", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Instruction> instructions;
+    private List<Instruction> instructions = new ArrayList<>();
 
     @OneToMany(mappedBy = "recipe", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<RecipeIngredient> recipeIngredients;
+    private List<RecipeIngredient> recipeIngredients = new ArrayList<>();
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "owner_account_id")

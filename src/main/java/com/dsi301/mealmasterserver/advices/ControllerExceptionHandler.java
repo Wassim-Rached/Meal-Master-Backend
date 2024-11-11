@@ -17,7 +17,7 @@ import java.util.Objects;
     this class is the controller advice
     it is used to handle the exceptions thrown by the controllers
  */
-@ControllerAdvice
+//@ControllerAdvice
 public class ControllerExceptionHandler {
 
     @ExceptionHandler(InputValidationException.class)

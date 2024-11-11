@@ -2,6 +2,7 @@ package com.dsi301.mealmasterserver.controllers;
 
 import com.dsi301.mealmasterserver.dto.CreateAccountRequestDTO;
 import com.dsi301.mealmasterserver.dto.accounts.GeneralAccountDTO;
+import com.dsi301.mealmasterserver.dto.accounts.UpdateAccountRequestDTO;
 import com.dsi301.mealmasterserver.entities.Account;
 import com.dsi301.mealmasterserver.exceptions.InputValidationException;
 import com.dsi301.mealmasterserver.repositories.AccountRepository;
@@ -39,5 +40,45 @@ public class AccountController {
         Account account = (Account) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return new ResponseEntity<>(new GeneralAccountDTO(account), HttpStatus.OK);
     }
+
+    // delete
+    @DeleteMapping("/my")
+    public ResponseEntity<?> deleteMyAccount(@RequestParam String password) {
+        Account account = (Account) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (!passwordEncoder.matches(password, account.getPassword())) {
+            return new ResponseEntity<>("Incorrect password", HttpStatus.UNAUTHORIZED);
+        }
+
+        accountRepository.delete(account);
+        return new ResponseEntity<>("Account Deleted Successfully", HttpStatus.OK);
+    }
+
+    // update
+    @PutMapping("/my")
+    public ResponseEntity<?> updateMyAccount(@RequestBody UpdateAccountRequestDTO requestDTO) {
+        Account account = (Account) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        account.setAvatarUrl(requestDTO.getAvatarUrl());
+
+        accountRepository.save(account);
+        return new ResponseEntity<>("Account Updated Successfully", HttpStatus.OK);
+    }
+
+    // change password
+    @PutMapping("/my/password")
+    public ResponseEntity<?> changePassword(@RequestParam String oldPassword, @RequestParam String newPassword) {
+        Account account = (Account) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (!passwordEncoder.matches(oldPassword, account.getPassword())) {
+            return new ResponseEntity<>("Incorrect password", HttpStatus.UNAUTHORIZED);
+        }
+
+        account.setPassword(passwordEncoder.encode(newPassword));
+        accountRepository.save(account);
+        return new ResponseEntity<>("Password Changed Successfully", HttpStatus.OK);
+    }
+
+
 
 }

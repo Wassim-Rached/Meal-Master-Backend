@@ -6,7 +6,7 @@ import lombok.*;
 import java.util.UUID;
 
 @Entity
-@Table(name = "instructions")
+@Table(name = "instructions", uniqueConstraints = {@UniqueConstraint(columnNames = {"recipe_id", "step_number"})})
 @Getter
 @Setter
 @NoArgsConstructor
@@ -26,6 +26,7 @@ public class Instruction {
     private Integer timeEstimate;
 
     @ManyToOne
+    @JoinColumn(name = "recipe_id", nullable = false)
     private Recipe recipe;
 
     @Override

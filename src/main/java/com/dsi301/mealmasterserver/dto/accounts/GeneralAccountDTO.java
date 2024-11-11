@@ -10,8 +10,10 @@ import lombok.Setter;
 @NoArgsConstructor
 public class GeneralAccountDTO {
     private String username;
+    private String avatarUrl;
 
     public GeneralAccountDTO(Account account) {
         this.username = account.getUsername();
+        this.avatarUrl = account.getAvatarUrl();
     }
 }

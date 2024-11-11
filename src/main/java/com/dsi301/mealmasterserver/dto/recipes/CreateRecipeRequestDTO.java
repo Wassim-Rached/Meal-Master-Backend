@@ -17,10 +17,9 @@ import java.util.List;
 public class CreateRecipeRequestDTO implements ToEntity<Recipe, Void> {
     private String title;
     private String description;
-    private String cover_img_url;
-    private Integer cooking_time;
-    private Integer serving_size;
-    private List<String> tags;
+    private String coverImgUrl;
+    private Integer cookingTime;
+    private Integer servingSize;
 
     private List<CreateInstructionRequestDTO> instructions;
 
@@ -30,9 +29,9 @@ public class CreateRecipeRequestDTO implements ToEntity<Recipe, Void> {
     public Recipe toEntity(Void aVoid) {
         if (title == null || title.isBlank())
             throw new InputValidationException("Title is required");
-        if (cooking_time == null)
+        if (cookingTime == null)
             throw new InputValidationException("Cooking time is required");
-        if (serving_size == null)
+        if (servingSize == null)
             throw new InputValidationException("Serving size is required");
         if (instructions == null)
             throw new InputValidationException("Instructions are required");
@@ -42,9 +41,9 @@ public class CreateRecipeRequestDTO implements ToEntity<Recipe, Void> {
         Recipe recipe = Recipe.builder()
                 .title(title)
                 .description(description)
-                .coverImgUrl(cover_img_url)
-                .cookingTime(cooking_time)
-                .servingSize(serving_size)
+                .coverImgUrl(coverImgUrl)
+                .cookingTime(cookingTime)
+                .servingSize(servingSize)
                 .build();
 
         List<Instruction> instructions = this.instructions.stream()

@@ -20,6 +20,8 @@ public class Account implements UserDetails {
     private String username;
     @Column(nullable = false)
     private String password;
+    @Column(length = 512)
+    private String avatarUrl;
 
     @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Recipe> recipes = new HashSet<>();

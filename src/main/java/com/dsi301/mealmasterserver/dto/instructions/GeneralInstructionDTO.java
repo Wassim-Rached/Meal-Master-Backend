@@ -10,14 +10,14 @@ import java.util.UUID;
 @Setter
 public class GeneralInstructionDTO {
     private UUID id;
-    private Integer step_number;
+    private Integer stepNumber;
     private String text;
-    private Integer time_estimate;
+    private Integer timeEstimate;
 
     public GeneralInstructionDTO(Instruction instruction) {
         this.id = instruction.getId();
-        this.step_number = instruction.getStepNumber();
+        this.stepNumber = instruction.getStepNumber();
         this.text = instruction.getText();
-        this.time_estimate = instruction.getTimeEstimate();
+        this.timeEstimate = instruction.getTimeEstimate();
     }
 }

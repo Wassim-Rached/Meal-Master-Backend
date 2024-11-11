@@ -18,9 +18,9 @@ public class DetailedRecipeDTO {
     private UUID id;
     private String title;
     private String description;
-    private String cover_img_url;
-    private Integer cooking_time;
-    private Integer serving_size;
+    private String coverImgUrl;
+    private Integer cookingTime;
+    private Integer servingSize;
     private GeneralAccountDTO owner;
 
     private List<GeneralInstructionDTO> instructions;
@@ -31,9 +31,9 @@ public class DetailedRecipeDTO {
         this.id = recipe.getId();
         this.title = recipe.getTitle();
         this.description = recipe.getDescription();
-        this.cover_img_url = recipe.getCoverImgUrl();
-        this.cooking_time = recipe.getCookingTime();
-        this.serving_size = recipe.getServingSize();
+        this.coverImgUrl = recipe.getCoverImgUrl();
+        this.cookingTime = recipe.getCookingTime();
+        this.servingSize = recipe.getServingSize();
         this.owner = new GeneralAccountDTO(recipe.getOwner());
 
 
