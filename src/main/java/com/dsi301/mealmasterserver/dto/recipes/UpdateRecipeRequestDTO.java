@@ -39,16 +39,20 @@ public class UpdateRecipeRequestDTO implements ToEntity<Recipe,Recipe> {
         
         if (coverImgUrl != null)
             recipe.setCoverImgUrl(coverImgUrl);
-        
+
         if (instructions != null)
-            recipe.setInstructions(instructions.stream()
-                    .map(instruction -> instruction.toEntity(recipe))
-                    .toList());
+            recipe.setInstructions(new ArrayList<>(
+                    instructions.stream()
+                            .map(instruction -> instruction.toEntity(recipe))
+                            .toList()
+            ));
         
         if (recipeIngredients != null)
-            recipe.setRecipeIngredients(recipeIngredients.stream()
-                    .map(recipeIngredient -> recipeIngredient.toEntity(recipe))
-                    .toList());
+            recipe.setRecipeIngredients(new ArrayList<>(
+                    recipeIngredients.stream()
+                            .map(recipeIngredient -> recipeIngredient.toEntity(recipe))
+                            .toList()
+            ));
 
         return recipe;
     }

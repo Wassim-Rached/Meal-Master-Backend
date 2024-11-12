@@ -23,10 +23,10 @@ public class RecipeIngredient {
     @ManyToOne
     private Recipe recipe;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     private Ingredient ingredient;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     private MeasurementUnit measurementUnit;
 
     @Override

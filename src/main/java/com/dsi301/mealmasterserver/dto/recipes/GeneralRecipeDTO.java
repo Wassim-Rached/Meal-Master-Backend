@@ -3,11 +3,13 @@ package com.dsi301.mealmasterserver.dto.recipes;
 import com.dsi301.mealmasterserver.dto.accounts.GeneralAccountDTO;
 import com.dsi301.mealmasterserver.dto.instructions.GeneralInstructionDTO;
 import com.dsi301.mealmasterserver.dto.recipeIngredients.GeneralRecipeIngredientDTO;
+import com.dsi301.mealmasterserver.entities.Instruction;
 import com.dsi301.mealmasterserver.entities.Recipe;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -35,8 +37,9 @@ public class GeneralRecipeDTO {
         this.owner = new GeneralAccountDTO(recipe.getOwner());
 
         this.instructions = recipe.getInstructions().stream()
-                .map(GeneralInstructionDTO::new)
-                .collect(Collectors.toList());
+            .sorted(Comparator.comparingInt(Instruction::getStepNumber))
+            .map(GeneralInstructionDTO::new)
+            .collect(Collectors.toList());
 
         this.recipeIngredients = recipe.getRecipeIngredients().stream()
                 .map(GeneralRecipeIngredientDTO::new)

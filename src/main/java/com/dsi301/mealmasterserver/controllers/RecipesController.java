@@ -5,10 +5,7 @@ import com.dsi301.mealmasterserver.dto.recipes.DetailedRecipeDTO;
 import com.dsi301.mealmasterserver.dto.recipes.GeneralRecipeDTO;
 import com.dsi301.mealmasterserver.dto.recipes.UpdateRecipeRequestDTO;
 import com.dsi301.mealmasterserver.entities.*;
-import com.dsi301.mealmasterserver.repositories.IngredientRepository;
-import com.dsi301.mealmasterserver.repositories.MeasurementUnitRepository;
-import com.dsi301.mealmasterserver.repositories.RecipeIngredientRepository;
-import com.dsi301.mealmasterserver.repositories.RecipeRepository;
+import com.dsi301.mealmasterserver.repositories.*;
 import com.dsi301.mealmasterserver.specifications.RecipeSpecification;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
@@ -34,6 +31,7 @@ public class RecipesController {
     private final MeasurementUnitRepository measurementUnitRepository;
     private final IngredientRepository ingredientRepository;
     private final RecipeIngredientRepository recipeIngredientRepository;
+    private final InstructionRepository instructionRepository;
 
     // create
     @PostMapping
@@ -111,35 +109,66 @@ public class RecipesController {
         return resultPage.map(GeneralRecipeDTO::new);
     }
 
-    // update
+    @Transactional
     @PutMapping("/{id}")
     public ResponseEntity<String> updateRecipe(@PathVariable UUID id, @RequestBody UpdateRecipeRequestDTO requestBody) {
         Account account = (Account) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Recipe recipe = recipeRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Recipe not found with id: " + id));
 
+        // Find the recipe or throw an exception if not found
+        Recipe recipe = recipeRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Recipe not found with id: " + id));
+
+        // Check if the user has permission to update this recipe
         if (!recipe.getOwner().getId().equals(account.getId())) {
             return ResponseEntity.status(403).body("You are not allowed to update this recipe");
         }
 
+        if(requestBody.getInstructions() != null) {
+            // Delete all the instructions of the recipe
+            var instructions = recipe.getInstructions();
+            instructions.forEach(instruction -> instruction.setRecipe(null));
+            recipe.setInstructions(null);
+            instructionRepository.deleteAll(instructions);
+            // flush the changes to the database
+            instructionRepository.flush();
+            recipeRepository.flush();
+        }
+
+        if(requestBody.getRecipeIngredients() != null) {
+            // Delete all the recipe ingredients of the recipe
+            var recipeIngredients = recipe.getRecipeIngredients();
+            recipeIngredients.forEach(recipeIngredient -> recipeIngredient.setRecipe(null));
+            recipe.setRecipeIngredients(null);
+            recipeIngredientRepository.deleteAll(recipeIngredients);
+            // flush the changes to the database
+            recipeIngredientRepository.flush();
+            recipeRepository.flush();
+        }
+
+        // Update the recipe fields from the request DTO
         recipe = requestBody.toEntity(recipe);
 
+        // Iterate through the recipe ingredients to update each one
+        for (RecipeIngredient recipeIngredient : recipe.getRecipeIngredients()) {
+            Ingredient ingredient = ingredientRepository.findById(recipeIngredient.getIngredient().getId())
+                    .orElseThrow(() -> new EntityNotFoundException("Ingredient not found with id: " + recipeIngredient.getIngredient().getId()));
+            MeasurementUnit measurementUnit = measurementUnitRepository.findById(recipeIngredient.getMeasurementUnit().getId())
+                    .orElseThrow(() -> new EntityNotFoundException("Measurement unit not found with id: " + recipeIngredient.getMeasurementUnit().getId()));
 
-        // get its ingredients and measurement units by name
-        for (RecipeIngredient recipeIngredient : recipe.getRecipeIngredients()){
-            Ingredient ingredient = ingredientRepository.findById(recipeIngredient.getIngredient().getId()).orElseThrow(() -> new EntityNotFoundException("Ingredient not found with id: " + recipeIngredient.getIngredient().getId()));
-            MeasurementUnit measurementUnit = measurementUnitRepository.findById(recipeIngredient.getMeasurementUnit().getId()).orElseThrow(() -> new EntityNotFoundException("Measurement unit not found with id: " + recipeIngredient.getMeasurementUnit().getId()));
-
-            // update recipe ingredient with the new ingredient and measurement unit
+            // Update the ingredient and measurement unit references
             recipeIngredient.setIngredient(ingredient);
             recipeIngredient.setMeasurementUnit(measurementUnit);
         }
 
-        recipeIngredientRepository.saveAll(recipe.getRecipeIngredients());
+        // Save all updated recipe ingredients
+//        recipeIngredientRepository.saveAll(recipe.getRecipeIngredients());
 
-
+        // Save the updated recipe
         recipeRepository.save(recipe);
+
         return ResponseEntity.ok("Recipe updated successfully");
     }
+
 
     // delete
     @DeleteMapping("/{id}")
