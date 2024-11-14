@@ -13,6 +13,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api/accounts")
 @RequiredArgsConstructor
@@ -24,14 +26,16 @@ public class AccountController {
     // create
     @PostMapping
     public ResponseEntity<?> createAccount(@RequestBody CreateAccountRequestDTO createAccountRequestDTO) {
-        accountRepository.findByUsername(createAccountRequestDTO.getUsername())
-                .ifPresent(account -> {
-                    throw new InputValidationException("Username already exists");
-                });
+        boolean accountAlreadyExists =  accountRepository.findByUsername(createAccountRequestDTO.getUsername()).isPresent();
+
+        if (accountAlreadyExists) {
+            return new ResponseEntity<>("Username already exists", HttpStatus.CONFLICT);
+        }
+
         Account account = createAccountRequestDTO.toEntity(null);
         account.setPassword(passwordEncoder.encode(account.getPassword()));
         accountRepository.save(account);
-        return new ResponseEntity<>("Account Created Successfuly", HttpStatus.CREATED);
+        return new ResponseEntity<>("Account Created Successfully", HttpStatus.CREATED);
     }
 
     // my account

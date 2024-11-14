@@ -4,14 +4,17 @@ import com.dsi301.mealmasterserver.entities.Account;
 import com.dsi301.mealmasterserver.interfaces.dto.ToEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class CreateAccountRequestDTO implements ToEntity<Account,Void> {
     private String username;
     private String password;
+
 
     @Override
     public Account toEntity(Void v) {

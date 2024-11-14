@@ -19,15 +19,6 @@ public class AuthenticationService {
 
     private final AuthenticationManager authenticationManager;
 
-//    public Account signup(RegisterUserDto input) {
-//        Account account = new Account()
-//                .setFullName(input.getFullName())
-//                .setEmail(input.getEmail())
-//                .setPassword(passwordEncoder.encode(input.getPassword()));
-//
-//        return accountRepository.save(account);
-//    }
-
     public Account authenticate(LoginRequestDTO request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
