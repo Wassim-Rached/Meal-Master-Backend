@@ -25,8 +25,9 @@ public class AccountController {
 
     // create
     @PostMapping
-    public ResponseEntity<?> createAccount(@RequestBody CreateAccountRequestDTO createAccountRequestDTO) {
-        boolean accountAlreadyExists =  accountRepository.findByUsername(createAccountRequestDTO.getUsername()).isPresent();
+    public ResponseEntity<String> createAccount(@RequestBody CreateAccountRequestDTO createAccountRequestDTO) {
+        boolean accountAlreadyExists =
+                accountRepository.findByUsername(createAccountRequestDTO.getUsername()).isPresent();
 
         if (accountAlreadyExists) {
             return new ResponseEntity<>("Username already exists", HttpStatus.CONFLICT);
@@ -35,10 +36,11 @@ public class AccountController {
         Account account = createAccountRequestDTO.toEntity(null);
         account.setPassword(passwordEncoder.encode(account.getPassword()));
         accountRepository.save(account);
+
         return new ResponseEntity<>("Account Created Successfully", HttpStatus.CREATED);
     }
 
-    // my account
+    // my account9
     @GetMapping("/my")
     public ResponseEntity<GeneralAccountDTO> getMyAccount() {
         Account account = (Account) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

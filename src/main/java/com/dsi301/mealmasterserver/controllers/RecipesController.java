@@ -33,9 +33,9 @@ public class RecipesController {
     private final RecipeIngredientRepository recipeIngredientRepository;
     private final InstructionRepository instructionRepository;
 
-    // create
+    // Create Recipe
     @PostMapping
-    public UUID createRecipe(@RequestBody CreateRecipeRequestDTO requestBody) {
+    public ResponseEntity<UUID> createRecipe(@RequestBody CreateRecipeRequestDTO requestBody) {
         Account account = (Account) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         Recipe recipe = requestBody.toEntity(null);
@@ -44,14 +44,21 @@ public class RecipesController {
 
         // get its ingredients and measurement units by name
         for (var recipeIngredient : recipe.getRecipeIngredients()){
-            Ingredient ingredient = ingredientRepository.findById(recipeIngredient.getIngredient().getId()).orElseThrow(() -> new EntityNotFoundException("Ingredient not found with id: " + recipeIngredient.getIngredient().getId()));
-            MeasurementUnit measurementUnit = measurementUnitRepository.findById(recipeIngredient.getMeasurementUnit().getId()).orElseThrow(() -> new EntityNotFoundException("Measurement unit not found with id: " + recipeIngredient.getMeasurementUnit().getId()));
+            Ingredient ingredient = ingredientRepository.findById(
+                recipeIngredient.getIngredient().getId()).orElseThrow(
+                    () -> new EntityNotFoundException(
+                        "Ingredient not found with id: " + recipeIngredient.getIngredient().getId()));
+
+            MeasurementUnit measurementUnit = measurementUnitRepository.findById(
+                recipeIngredient.getMeasurementUnit().getId()).orElseThrow(
+                    () -> new EntityNotFoundException(
+                        "Measurement unit not found with id: " + recipeIngredient.getMeasurementUnit().getId()));
 
             // update recipe ingredient with the new ingredient and measurement unit
             recipeIngredient.setIngredient(ingredient);
             recipeIngredient.setMeasurementUnit(measurementUnit);
         }
-        return recipeRepository.save(recipe).getId();
+        return ResponseEntity.status(201).body(recipeRepository.save(recipe).getId());
     }
 
 

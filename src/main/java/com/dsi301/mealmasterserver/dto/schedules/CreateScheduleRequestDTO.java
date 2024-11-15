@@ -5,8 +5,8 @@ import com.dsi301.mealmasterserver.entities.Schedule;
 import com.dsi301.mealmasterserver.interfaces.dto.ToEntity;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.time.Instant;
+
 import java.util.UUID;
 
 @Getter

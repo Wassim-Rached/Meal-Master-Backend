@@ -27,4 +27,12 @@ public class CreateRecipeIngredientRequestDTO implements ToEntity<RecipeIngredie
                 .measurementUnit(MeasurementUnit.builder().id(measurementUnitId).build())
                 .build();
     }
+
+    public static CreateRecipeIngredientRequestDTO fake() {
+        CreateRecipeIngredientRequestDTO dto = new CreateRecipeIngredientRequestDTO();
+        dto.setAmount(1.0);
+        dto.setIngredientId(UUID.randomUUID());
+        dto.setMeasurementUnitId(UUID.randomUUID());
+        return dto;
+    }
 }

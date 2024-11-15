@@ -30,4 +30,12 @@ public class CreateInstructionRequestDTO implements ToEntity<Instruction, Recipe
                 .recipe(recipe)
                 .build();
     }
+
+    public static CreateInstructionRequestDTO fake() {
+        CreateInstructionRequestDTO dto = new CreateInstructionRequestDTO();
+        dto.setStepNumber(1);
+        dto.setText("Fake instruction");
+        dto.setTimeEstimate(10);
+        return dto;
+    }
 }

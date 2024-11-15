@@ -10,6 +10,7 @@ import com.dsi301.mealmasterserver.interfaces.dto.ToEntity;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -21,9 +22,9 @@ public class CreateRecipeRequestDTO implements ToEntity<Recipe, Void> {
     private Integer cookingTime;
     private Integer servingSize;
 
-    private List<CreateInstructionRequestDTO> instructions;
+    private List<CreateInstructionRequestDTO> instructions = new ArrayList<>();
 
-    private List<CreateRecipeIngredientRequestDTO> recipeIngredients;
+    private List<CreateRecipeIngredientRequestDTO> recipeIngredients = new ArrayList<>();
 
     @Override
     public Recipe toEntity(Void aVoid) {
@@ -33,10 +34,10 @@ public class CreateRecipeRequestDTO implements ToEntity<Recipe, Void> {
             throw new InputValidationException("Cooking time is required");
         if (servingSize == null)
             throw new InputValidationException("Serving size is required");
-        if (instructions == null)
-            throw new InputValidationException("Instructions are required");
-        if (recipeIngredients == null)
-            throw new InputValidationException("Recipe ingredients are required");
+//        if (instructions == null)
+//            throw new InputValidationException("Instructions are required");
+//        if (recipeIngredients == null)
+//            throw new InputValidationException("Recipe ingredients are required");
 
         Recipe recipe = Recipe.builder()
                 .title(title)
@@ -58,5 +59,15 @@ public class CreateRecipeRequestDTO implements ToEntity<Recipe, Void> {
         recipe.setRecipeIngredients(recipeIngredients);
 
         return recipe;
+    }
+
+    public static CreateRecipeRequestDTO fake() {
+        CreateRecipeRequestDTO requestDTO = new CreateRecipeRequestDTO();
+        requestDTO.setTitle("Test Recipe");
+        requestDTO.setCookingTime(30);
+        requestDTO.setServingSize(4);
+        requestDTO.setDescription("Test description");
+        requestDTO.setCoverImgUrl("https://test.com/image.jpg");
+        return requestDTO;
     }
 }
