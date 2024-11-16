@@ -34,6 +34,7 @@ public class DataInitializer implements CommandLineRunner {
         // Insert Account
         Account account = new Account();
         account.setUsername("masterChef");
+        account.setAvatarUrl("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE6HEjW4bADgFcGS2x3N9mZQI2mZHWfVcuhQ&s");
         account.setPassword(passwordEncoder.encode("password"));
         accountRepository.findByUsername(account.getUsername())
                 .orElseGet(() -> accountRepository.save(account));
